@@ -1,0 +1,52 @@
+.container__jugador{
+}
+.container__partida{
+height:100vh; /* puede variar a 100% */
+}
+.contaner__img img{
+  width: 90px;
+  border-radius: 50px;
+}
+.container__info{
+margin:0 10px;
+
+
+}
+
+.container__info h5{
+
+}
+.container__info img{
+  width: 60px;
+}
+.container__jugadores{
+
+  display: flex;
+  justify-content:space-between;
+}
+/* .contaier__left{
+  flex-wrap: wrap;
+} */
+/* .container__jugadores div:ntd-child(2n){
+  background-color: red;
+} */
+.container__center {
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.container__center .card{
+  width:170px;
+  padding: 5px;
+box-shadow: 0px 0px 10px #000000;
+background-color: #1d1d1d;
+margin:10px;
+}
+.card-body p{
+  margin:0;
+  padding:0;
+}
+.container__bottom{
+
+}
+

@@ -1,0 +1,12 @@
+<div class="bg-dark text-light contenedor p-5">
+    <h1 class="text-center p-5">JuegoCartas</h1>
+
+    <div class="d-flex justify-content-center">
+      <input type="text" class="px-5 py-3 m-3 text-center" [(ngModel)]="nombreJugador" (keyup)="existeUnNombre()" placeholder="Ingrese su nombre" value="">
+    </div>
+    <div class="d-flex justify-content-center">
+        <input type="button" value="Crear partida" [disabled]="btnDisabled" class=" btn btn-success px-5 py-3 m-2 input-crearPartida">
+        <input type="button" value="Unirme partida" [disabled]="btnDisabled" class=" btn btn-primary px-5 py-3 m-2 input-crearPartida">
+
+      </div>
+  </div>
