@@ -6,7 +6,7 @@ import org.springframework.data.repository.Repository;
 
 import com.david.senasoft.model.Partida;
 
-public interface PartidaRepository extends Repository<PartidaRepository, Integer> {
+public interface PartidaRepository extends Repository<Partida, Integer> {
 	
 	public List<Partida> findAll();
 	public Partida findById(int id);
