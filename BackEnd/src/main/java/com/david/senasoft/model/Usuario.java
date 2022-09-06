@@ -25,7 +25,7 @@ public class Usuario implements Serializable{
 	private String nombre;
 	
 	@Column
-	private String TipoUsuario;
+	private String Tipousuario;
 	
 	@Column
 	private String Resultado;
@@ -51,11 +51,11 @@ public class Usuario implements Serializable{
 	}
 
 	public String getTipoUsuario() {
-		return TipoUsuario;
+		return Tipousuario;
 	}
 
 	public void setTipoUsuario(String tipoUsuario) {
-		TipoUsuario = tipoUsuario;
+		Tipousuario = tipoUsuario;
 	}
 
 	public String getResultado() {
@@ -80,7 +80,7 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario [idusuario=" + idusuario + ", nombre=" + nombre + ", TipoUsuario=" + TipoUsuario
+		return "Usuario [idusuario=" + idusuario + ", nombre=" + nombre + ", TipoUsuario=" + Tipousuario
 				+ ", Resultado=" + Resultado + ", partida=" + partida + "]";
 	}
 	
