@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.data.repository.Repository;
 
-public interface PartidaRepository extends Repository<PartidaRepository, Integer> {
+import com.david.senasoft.model.Partida;
+
+public interface PartidaRepository extends Repository<Partida, Integer> {
 	
-	public List<PartidaRepository> findAll();
-	public PartidaRepository findById(int id);
-	public PartidaRepository save(PartidaRepository P);
-	public PartidaRepository deleteById(int id);
+	public List<Partida> findAll();
+	public Partida findById(int id);
+	public Partida save(Partida P);
+	public Partida deleteById(int id);
 }
