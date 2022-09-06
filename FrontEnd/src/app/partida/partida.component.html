@@ -97,27 +97,22 @@
           </div>
         </div>
 
-
       </div>
 
-      <div class="container__bottom mt-5 d-flex justify-content-center">
-        <div class="m-2">
 
-          <input type="input" class="btn btn-success " value="Lanzar!">
+      <div class="container__bottom mt-5 d-flex align-items-center justify-content-center">
+        <div class="m-2">
+          <input type="button" class="btn btn-success py-3 px-5 " value="Lanzar!">
         </div>
         <div class="container__select m-2">
           <select class="form-select" aria-label="Default select example">
             <option selected>Seleccionar</option>
-            <option value="1">Cilindraje</option>
-            <option value="2">Potencia</option>
-            <option value="3">Revoluciones</option>
-            <option value="3">Peso</option>
-
+            <option value="cilindraje">Cilindraje</option>
+            <option value="potencia">Potencia</option>
+            <option value="peso">Peso</option>
           </select>
         </div>
-
       </div>
-
 
     </div>
 
@@ -161,6 +156,20 @@
     </div>
   </div>
 
+<input type="button" (click)="abrirModal()" value="abrir modal">
 
+</section>
+<section class="modal__info">
+
+<!-- The Modal -->
+<div id="myModal" [(ngModel)]="modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="cerrarModal()">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
 
 </section>

@@ -11,7 +11,18 @@ export class PartidaComponent implements OnInit {
   listaJugadores:any;
   listaJugadoresLeft:any;
   listaJugadoresRight:any;
+  modal:any;
+/* Actualizacion en tiempo real --> no utilizar la variable que cambio desde el onInit si no,
+     estar usando el servicio siempre , sin variables */
 
+     abrirModal(){
+      /* this.modal.display = "block"; */
+      console.log(this.modal);
+
+     }
+     cerrarModal(){
+      this.modal.style.display = "none";
+     }
   listaImagenesPerfilJugador:any = [
     {
       url:"../../assets/pokemonesImg/pokemon1.jfif"
