@@ -212,7 +212,7 @@ try {
 
             console.log("se insertarion datos a jugadorpartida");
 
-            alert("ingreso a partida")
+
               this.router.navigate(['partida']);
           }
       }
