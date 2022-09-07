@@ -48,4 +48,9 @@ public class RondaController {
 	public Ronda eliminar(@PathVariable("id") int id) {
 		return service.deleteById(id);
 	}
+	
+	@PostMapping(path= {"/finalizarRonda"})
+	public String finalizarRonda(@RequestBody Ronda r) {
+		return service.finalizarRonda(r);
+	}
 }

@@ -31,5 +31,6 @@ public class JugadorPartidaController {
 	public JugadorPartida agregarJugador(@RequestBody JugadorPartida jp) {
 		return service.enviarJugador(jp);
 	}
+
 	
 }

@@ -13,4 +13,7 @@ public interface RondaService {
 	public Ronda save(Ronda r);
 	public Ronda edit(Ronda r);
 	public Ronda deleteById(int id);
+	
+	public List<Ronda> rondas(int id);
+	public String finalizarRonda(Ronda r);
 }
