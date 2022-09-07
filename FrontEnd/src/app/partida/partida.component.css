@@ -1,7 +1,13 @@
 .container__jugador{
 }
+.form-select-btn{
+  border-radius: 10px;
+  padding:15px 40px;
+  display: flex;
+  justify-content: space-between;
+}
 .container__partida{
-height:100vh; /* puede variar a 100% */
+height:100%; /* puede variar a 100% */
 }
 .contaner__img img{
   width: 90px;
@@ -34,6 +40,24 @@ background-color: #1d1d1d;
 margin:10px;
 
 }
+.container__info{
+  cursor: pointer;
+  width:120px;
+
+}
+.container__info hr{
+margin:0;
+padding:0;
+}
+.container__info .codig{
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+
+}
+.container__info .card{
+  box-shadow: 0px 0px 10px black;
+}
 .container__center .card:hover{
   cursor: pointer;
   animation: animacionCarta 1s ease;
@@ -48,6 +72,11 @@ margin:10px;
   100%{
     transform:scale(1.1);
   }
+}
+.card-body{
+margin:0;
+padding:10px;
+background-color: #0d0d0d;
 }
 .card-body p{
   margin:0;
