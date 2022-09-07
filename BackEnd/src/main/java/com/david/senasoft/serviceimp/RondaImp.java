@@ -40,4 +40,16 @@ public class RondaImp implements RondaService{
 		return repositorio.deleteById(id);
 	}
 	
+	@Override
+	public String finalizarRonda(Ronda r) {
+		repositorio.save(r);
+		String CodGanador = r.getCodcartaganadora();
+		return CodGanador;
+	}
+
+	@Override
+	public List<Ronda> rondas(int id) {
+		return repositorio.rondas(id);
+	}
+	
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.david.senasoft.model.Cartas_usuarios;
+import com.david.senasoft.model.Usuario;
 import com.david.senasoft.service.Cartas_usuariosService;
 
 @CrossOrigin(origins="*")
@@ -47,5 +48,15 @@ public class Cartas_usuariosController {
 	@DeleteMapping(path= {"/borrar/{id}"})
 	public Cartas_usuarios eliminar(@PathVariable("id") int id) {
 		return service.deleteById(id);
+	}
+	
+	@PostMapping(path= {"/repartirCartas"})
+	public List<Cartas_usuarios> repartirCartas(@RequestBody List<Usuario> u){
+		return service.repartirCartas(u);
+	}
+	
+	@PostMapping(path= {"/actualizarLista"})
+	public List<Cartas_usuarios> actualizarLista(@RequestBody List<Cartas_usuarios> cu){
+		return service.actualizarLista(cu);
 	}
 }
