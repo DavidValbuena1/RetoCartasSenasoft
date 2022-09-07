@@ -156,18 +156,23 @@
     </div>
   </div>
 
-<input type="button" (click)="abrirModal()" value="abrir modal">
+<input type="button"  (click)="abrirModal()"  value="abrir modal">
 
 </section>
 <section class="modal__info">
 
 <!-- The Modal -->
-<div id="myModal" [(ngModel)]="modal" class="modal">
+<div id="myModal" class="modal" *ngIf="estadoModal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close" (click)="cerrarModal()">&times;</span>
-    <p>Some text in the Modal..</p>
+    <div class="text-center">
+      <p>Comparte tu codigo!</p>
+      <h1 CLASS="py-2 px-5 bg-dark text-light">{{this.codigoPartida}}</h1>
+      <p class="py-3">Jugadores unidos a la partida <strong>{{numeroJugadoresPartida}}</strong></p>
+      <input type="button" value="Empezar partida" *ngIf="estadoBtnEmpezar" class="btn btn-outline-dark py-2 px-5">
+    </div>
   </div>
 
 </div>

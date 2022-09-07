@@ -59,8 +59,9 @@ export class InicioComponent implements OnInit {
       codigo: this.colorHEX(),
       estado: 1,
       rondas: 0,
-      resultado: "En juego"
+      resultado: "En espera"
   }
+  localStorage.setItem("dataPartida", JSON.stringify(data))
 
   try {
     console.log(data);
