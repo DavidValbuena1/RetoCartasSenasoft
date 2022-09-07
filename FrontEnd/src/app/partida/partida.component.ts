@@ -24,11 +24,11 @@ export class PartidaComponent implements OnInit {
   existePartidaFun(){
     this.estadoModal = true;
     let partida = localStorage.getItem("dataPartida")
-    console.log(this.partidaService.getPartidas().subscribe((y:any)=>y));
+   /*  console.log(this.partidaService.getPartidas().subscribe((y:any)=>y)); */
     if(partida){
       let codigo:any = JSON.parse(partida).codigo
       this.codigoPartida = codigo;
-      console.log(this.codigoPartida);
+      /* console.log(this.codigoPartida); */
 /*  SE OBTIENE LA PARTIDA */
       this.partidaService.getPartidas().subscribe((y:any)=>{
         for(let p of y){

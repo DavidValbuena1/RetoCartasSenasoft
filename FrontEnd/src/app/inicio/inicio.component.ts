@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PartidaService } from 'src/services/partida.service';
 import { UsuarioService } from 'src/services/usuario.service';
 import { JugadorPartidaService } from 'src/services/usuarioPartida.service';
@@ -27,8 +28,9 @@ export class InicioComponent implements OnInit {
     }
   }
   /*  */
-  idPartidaCrearUsuario:any;
+
   crearUsuario(tipoPartida:string){
+    let idPartidaCrearUsuario:any;
     let partida = JSON.parse(localStorage.getItem("dataPartida") || "[]")
 /* console.log(partida); */
 
@@ -37,34 +39,35 @@ this.partidaService.getPartidas().subscribe((x:any)=> {
   for(let p of x){
 
     if(p.codigo == partida.codigo){
-      console.log(this.idPartida);
-     this.idPartida = p.idpartida;
+      idPartidaCrearUsuario = p.idpartida;
+      console.log(idPartidaCrearUsuario);
+
+
+      let data = {
+        idusuario:0,
+      nombre: this.nombreJugador,
+      partida: {
+          idpartida:p.idpartida,
+      },
+      tipoUsuario: "Administrador",
+      resultado: "ganador"
+      }
+      try {
+        console.log(data);
+        this.usuarioService.postUsuario(data)
+        console.log("usuario creadooooo");
+      } catch (error) {
+        console.log(error);
+
+      }
+      localStorage.setItem("dataUsuario", JSON.stringify(data))
+      this.insercionUsuarioPartida()
     }
   }
 })
-
-    let data = {
-      idusuario:0,
-    nombre: this.nombreJugador,
-    partida: {
-        idpartida:this.idPartidaCrearUsuario,
-    },
-    tipoUsuario: "Administrador",
-    resultado: "ganador"
-    }
-    try {
-
-      this.usuarioService.postUsuario(data)
-      console.log("usuario creado");
-      console.log(data);
+    /* console.log(idPartidaCrearUsuario); */
 
 
-    } catch (error) {
-      console.log(error);
-
-    }
-    localStorage.setItem("dataUsuario", JSON.stringify(data))
-    this.insercionUsuarioPartida()
   }
   /* CREACION CODIGO HEXADECIMAL ALEATORIO */
   generarLetra(){
@@ -84,7 +87,7 @@ this.partidaService.getPartidas().subscribe((x:any)=> {
    idJugador:any;
    insercionUsuarioPartida(){
 
-
+/* hacer inserion en db */
     let partida = JSON.parse(localStorage.getItem("dataPartida") || "[]")
     let jugador = JSON.parse(localStorage.getItem("dataUsuario") || "[]")
 
@@ -92,23 +95,69 @@ this.partidaService.getPartidas().subscribe((x:any)=> {
       for(let p of x){
         if(p.codigo == partida.codigo){
          this.idPartida = p.idpartida;
+         console.log(this.idPartida);
+
+
+/* --------- */
+this.usuarioService.getUsuarios().subscribe((x:any)=> {
+  for(let u of x){
+    if(u.nombre == this.nombreJugador){
+
+      this.idJugador = u.idusuario;
+      //enviar post
+      let data = {
+        partida:{
+            idpartida:p.idpartida
+        },
+        jugador:{
+            idusuario:u.idusuario
+        }
+      }
+      try{
+        this.jugadorPartidaService.postJugadorPartida(data)
+        this.jugadorPartidaService.getJugadorPartidas(this.idPartida).subscribe((x:any)=>x)
+        this.router.navigate(['partida']);
+      }catch(err){
+
+      }
+
+    }else{
+      console.log("vuelve a enviarlo")
+    }
+  }
+
+})
+/* --------- */
+
+
+
+
         }
       }
     })
-    this.usuarioService.getUsuarios().subscribe((x:any)=> {
-      for(let p of x){
-        console.log(p.nombre);
+  /*   this.usuarioService.getUsuarios().subscribe((x:any)=> {
+      for(let u of x){
+        if(u.nombre == this.nombreJugador){
 
-        if(p.nombre == this.nombreJugador){
-          console.log(p);
-         this.idJugador = p.idusuario;
+          this.idJugador = u.idusuario;
+          //enviar post
+          let data = {
+            id:0,
+            idpartida:p.idpartida,
+            idjugador:u.idjugador
+          }
+          this.jugadorPartidaService.postJugadorPartida(data)
+          this.jugadorPartidaService.getJugadorPartidas(this.idPartida).subscribe((x:any)=>x)
+        }else{
+          console.log("vuelve a enviarlo")
         }
       }
 
-    })
+    }) */
 
 
-    /* console.log(this.jugadorPartidaService.getJugadorPartidas(this.idPartida).subscribe((x:any)=>x)) */
+
+
    }
   /* CREACION DE UNA PARTIDA */
   crearPartida(){
@@ -125,9 +174,9 @@ this.partidaService.getPartidas().subscribe((x:any)=> {
   try {
     console.log(data);
     this.partidaService.postPartida(data);
+    this.insercionUsuarioPartida()
     this.crearUsuario("");
 
-  /*   this.crearUsuario("") */
     console.log("partida creada");
 
 
@@ -142,7 +191,8 @@ this.partidaService.getPartidas().subscribe((x:any)=> {
   listaUsuarios:any;
   constructor(private usuarioService:UsuarioService,
               private partidaService:PartidaService,
-              private jugadorPartidaService:JugadorPartidaService) { }
+              private jugadorPartidaService:JugadorPartidaService,
+              private router:Router) { }
   ngOnInit(): void {
     this.listaUsuarios = this.usuarioService.getUsuarios().subscribe((x:any)=>{
       console.log(x);

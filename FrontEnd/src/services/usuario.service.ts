@@ -16,7 +16,7 @@ export class UsuarioService {
       return  this.http.get('https://retocartassenasoft.azurewebsites.net/Senasoft/Usuario/listar')
     }
     postUsuario(data:Usuario):any{
-      return this.http.post('https://retocartassenasoft.azurewebsites.net/Senasoft/Usuario/agregar',data)
+      return this.http.post<Usuario>('https://retocartassenasoft.azurewebsites.net/Senasoft/Usuario/agregar',data).subscribe((x:any)=>console.log(x))
     }
   }
 

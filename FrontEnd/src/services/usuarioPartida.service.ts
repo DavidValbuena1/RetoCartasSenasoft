@@ -17,8 +17,10 @@ export class JugadorPartidaService {
 }
 interface JugadorPartida {
 /*   idJugadorPartida: number, */
-  codigo: string,
-  estado: number,
-  rondas: number,
-  resultado: string
+partida:{
+  idpartida:number
+},
+jugador:{
+  idusuario:number
+}
 }
