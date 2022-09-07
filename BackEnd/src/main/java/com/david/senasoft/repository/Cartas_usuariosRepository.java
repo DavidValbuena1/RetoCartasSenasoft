@@ -12,4 +12,5 @@ public interface Cartas_usuariosRepository extends Repository<Cartas_usuarios, I
 	public Cartas_usuarios findById(int id);
 	public Cartas_usuarios save(Cartas_usuarios c);
 	public Cartas_usuarios deleteById(int id);
+	public List<Cartas_usuarios> saveAll(Iterable<Cartas_usuarios> cu);
 }
