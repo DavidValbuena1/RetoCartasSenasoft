@@ -184,47 +184,43 @@ tipoUsuario: "jugador",
 resultado: "En espera"
 }
 try {
-  this.usuarioService.postUsuario(data)
-  console.log("USUSARIO CREADOOO");
-  this.usuarioService.getUsuarios().subscribe((x:any)=> {
-    for(let u of x){
-      console.log(this.nombreJugador);
-
-      if(u.nombre == this.nombreJugador){
-      console.log(this.nombreJugador);
-
-       /*  console.log(u.idusuario);
-        console.log(u.idpartida); */
-
-
-        this.idJugador = u.idusuario;
-
-        try {
-
-          new Promise((resolve,reject)=>{
-            let datos = {
-              partida:{
-                idpartida:p.idpartida
-            },
-            jugador:{
-                idusuario:u.idusuario
-            }
-            }
-            console.log(datos);
-
-            resolve(this.jugadorPartidaService.postJugadorPartida(datos))
-            reject("error de envio a tabla")
-          })
-.then((x)=>console.log("PUDIMOS CARGARLO"))
-.catch((x)=>console.log("NO PUDIMOS "))
-          console.log("se insertarion datos a jugadorpartida");
-
-        } catch (error) {
-            console.log(error);
-        }
-      }
-    }
+  new Promise((resolve,reject)=>{
+    resolve(this.usuarioService.postUsuario(data))
+    reject("no se pudo ejecutar")
   })
+  .then(r=>{
+    console.log("USUSARIO CREADOOO");
+    this.usuarioService.getUsuarios().subscribe((x:any)=> {
+      for(let u of x){
+        console.log(this.nombreJugador);
+
+        if(u.nombre == this.nombreJugador){
+        console.log(this.nombreJugador);
+         /*  console.log(u.idusuario);
+          console.log(u.idpartida); */
+          this.idJugador = u.idusuario;
+              let datos = {
+                partida:{
+                  idpartida:p.idpartida
+              },
+              jugador:{
+                  idusuario:u.idusuario
+              }
+              }
+              console.log(datos);
+              this.jugadorPartidaService.postJugadorPartida(datos)
+
+            console.log("se insertarion datos a jugadorpartida");
+
+            alert("ingreso a partida")
+              this.router.navigate(['partida']);
+          }
+      }
+    })
+  })
+
+  .catch(x=>console.error(x))
+
 } catch (error) {
   console.log(error);
 }
