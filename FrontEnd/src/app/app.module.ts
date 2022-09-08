@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { CartaJugadorService } from 'src/services/carta-jugador.service';
+import { PartidaService } from 'src/services/partida.service';
 import { UsuarioService } from 'src/services/usuario.service';
+import { JugadorPartidaService } from 'src/services/usuarioPartida.service';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PartidaComponent } from './partida/partida.component';
@@ -37,7 +40,7 @@ const routes:Routes=[
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService,PartidaService,JugadorPartidaService,CartaJugadorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

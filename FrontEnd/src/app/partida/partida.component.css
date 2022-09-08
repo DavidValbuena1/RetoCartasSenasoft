@@ -40,6 +40,10 @@ background-color: #1d1d1d;
 margin:10px;
 
 }
+.img__moto{
+width:200px;
+margin:auto;
+}
 .container__info{
   cursor: pointer;
   width:120px;
