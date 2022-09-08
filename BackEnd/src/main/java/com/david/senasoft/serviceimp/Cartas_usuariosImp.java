@@ -49,35 +49,42 @@ public class Cartas_usuariosImp implements Cartas_usuariosService {
 	public List<Cartas_usuarios> repartirCartas(List<Usuario> u) {
 		List<Cartas_usuarios> CardsDealt = new ArrayList<Cartas_usuarios>();
 		Carta card = new Carta();
+		
+		repositorio.deleteAll();
 
 		int i = 1;
-		int rango = 33;
-		int numeros[] = new int[rango];
+		int rango = 32;
 		int cantidadJugadores = u.size();
 		int division = 32 / cantidadJugadores;
-		for (i = 1; i < rango; i++) {
-			numeros[i] = ((int) (Math.random() * 33)) + 1;
-			for (int j = 1; j < i; j++) {
+		int numeros[] = new int[rango];
+		int numeros2[]=new int[rango-division+1];
+		for (i = 0; i < rango; i++) {
+			numeros[i] = ((int) (Math.random() * 32)) + 1;
+			for (int j = 0; j < i; j++) {
 				if (numeros[i] == numeros[j]) {
 					i--;
 				}
 			}
 		}
 		int cont = 0;
+		
 		for (Usuario us : u) {
-			for (int k = cont; k < division; k++) {
+			for (int k = 0; k <= division-1; k++) {
 				Cartas_usuarios cartas = new Cartas_usuarios();
-				card = serviceCard.findById(numeros[k]+1);
-				cartas.setId(k+1);
-				cartas.setCarta(card);
-				cartas.setUsuario(us);
-				System.out.println(cont);
 				cont++;
-				System.out.println("k" + k);
-				CardsDealt.add(cartas);
+				if(cont<=division*cantidadJugadores) {
+					numeros2[cont]=numeros[cont];
+					System.out.println(numeros2[cont]);
+					card = serviceCard.findById(numeros2[cont]);
+					System.out.println(card);
+					cartas.setId(cont);
+					cartas.setCarta(card);
+					cartas.setUsuario(us);
+					CardsDealt.add(cartas);
+				}
 			}
-			division = division + cont;
 		}
+		repositorio.saveAll(CardsDealt);
 		return CardsDealt;
 	}
 
@@ -85,7 +92,6 @@ public class Cartas_usuariosImp implements Cartas_usuariosService {
 	public List<Cartas_usuarios> actualizarLista(Iterable<Cartas_usuarios> cu) {
 		return repositorio.saveAll(cu);
 	}
-
-
+	
 
 }
