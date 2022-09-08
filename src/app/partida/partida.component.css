@@ -1,0 +1,144 @@
+.container__jugador{
+}
+.form-select-btn{
+  border-radius: 10px;
+  padding:15px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.container__partida{
+height:100%; /* puede variar a 100% */
+}
+.contaner__img img{
+  width: 90px;
+  border-radius: 50px;
+}
+.container__info{
+margin:0 10px;
+}
+.container__info h5{
+
+}
+.container__info img{
+  width: 60px;
+}
+.container__jugadores{
+  display: flex;
+  justify-content:space-between;
+}
+.container__center {
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+padding-top:20px;
+}
+.container__center .card{
+  width:170px;
+  padding: 5px;
+box-shadow: 0px 0px 10px #000000;
+background-color: #1d1d1d;
+margin:10px;
+
+}
+.img__moto{
+width:200px;
+margin:auto;
+}
+.container__info{
+  cursor: pointer;
+  width:120px;
+
+}
+.container__info hr{
+margin:0;
+padding:0;
+}
+.container__info .codig{
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+
+}
+.container__info .card{
+  box-shadow: 0px 0px 10px black;
+}
+.container__center .card:hover{
+  cursor: pointer;
+  animation: animacionCarta 1s ease;
+}
+@keyframes animacionCarta {
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.1);
+  }
+  100%{
+    transform:scale(1.1);
+  }
+}
+.card-body{
+margin:0;
+padding:10px;
+background-color: #0d0d0d;
+}
+.card-body p{
+  margin:0;
+  padding:0;
+}
+.container__bottom{
+
+}
+
+
+/* MODAL *
+
+/* The Modal (background) */
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.displayBlock{
+  display: block;
+}
+.displayNone{
+  display: none;
+}
+
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* MODAL */
+
