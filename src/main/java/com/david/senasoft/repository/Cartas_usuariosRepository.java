@@ -17,6 +17,6 @@ public interface Cartas_usuariosRepository extends Repository<Cartas_usuarios, I
 	
 	public void deleteAll();
 	
-	@Query("SELECT c FROM Cartas_usuarios c WHERE c.usuario.idusuario=?1")
+	@Query("SELECT c FROM Cartas_usuarios c WHERE c.Usuario.idusuario=?1")
 	public List<Cartas_usuarios> encontrarPorUsuario(int id);
 }
