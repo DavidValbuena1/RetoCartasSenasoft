@@ -20,5 +20,11 @@ public class CartasImp implements CartaService{
 		return repositorio.findAll();
 	}
 	
+
+	@Override
+	public Carta findById(int id) {
+		return repositorio.findById(id);
+	}
+	
 	
 }

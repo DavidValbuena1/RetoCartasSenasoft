@@ -10,4 +10,5 @@ import com.david.senasoft.model.Carta;
 public interface CartaService {
 	
 	public List<Carta> findAll();
+	public Carta findById(int id);
 }

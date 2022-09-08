@@ -13,50 +13,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.david.senasoft.model.Cartas_usuarios;
-import com.david.senasoft.model.Usuario;
-import com.david.senasoft.service.Cartas_usuariosService;
+import com.david.senasoft.model.Ronda;
+import com.david.senasoft.service.RondaService;
 
-@CrossOrigin(origins="*")
 @RestController
-@RequestMapping({"/Senasoft/CartasUsuarios"})
-public class Cartas_usuariosController {
+@CrossOrigin(origins="*")
+@RequestMapping({"/Senasoft/Ronda"})
+public class RondaController {
 	@Autowired(required=true)
-	private Cartas_usuariosService service;
+	private RondaService service;
 	
 	@GetMapping(path= {"/listar"})
-	public List<Cartas_usuarios> listar(){
+	public List<Ronda> listar(){
 		return service.findAll();
 	}
 	
 	@GetMapping(path= {"/listarId/{id}"})
-	public Cartas_usuarios listarId(@PathVariable("id") int id) {
+	public Ronda listarId(@PathVariable("id") int id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(path= {"/agregar"})
-	public Cartas_usuarios agregar(@RequestBody Cartas_usuarios cu) {
+	public Ronda agregar(@RequestBody Ronda cu) {
 		return service.save(cu);
 	}
 	
 	@PutMapping(path = {"/editar/{id}"})
-	public Cartas_usuarios editar(@PathVariable("id") int id, @RequestBody Cartas_usuarios cu) {
+	public Ronda editar(@PathVariable("id") int id, @RequestBody Ronda cu) {
 		cu.setId(id);
 		return service.edit(cu);
 	}
 	
 	@DeleteMapping(path= {"/borrar/{id}"})
-	public Cartas_usuarios eliminar(@PathVariable("id") int id) {
+	public Ronda eliminar(@PathVariable("id") int id) {
 		return service.deleteById(id);
 	}
 	
-	@PostMapping(path= {"/repartirCartas"})
-	public List<Cartas_usuarios> repartirCartas(@RequestBody List<Usuario> u){
-		return service.repartirCartas(u);
-	}
-	
-	@PostMapping(path= {"/actualizarLista"})
-	public List<Cartas_usuarios> actualizarLista(@RequestBody List<Cartas_usuarios> cu){
-		return service.actualizarLista(cu);
+	@PostMapping(path= {"/finalizarRonda"})
+	public String finalizarRonda(@RequestBody Ronda r) {
+		return service.finalizarRonda(r);
 	}
 }

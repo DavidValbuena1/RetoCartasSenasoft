@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.david.senasoft.model.Cartas_usuarios;
 import com.david.senasoft.model.Partida;
 
 
@@ -14,4 +15,6 @@ public interface PartidaService {
 	public Partida edit(Partida p);
 	public Partida deleteById(int id);
 	public Partida findById(int id);
+	
+	public void finalizarPartida(List<Cartas_usuarios> cu,Partida p);
 }

@@ -28,8 +28,6 @@ public class Carta implements Serializable {
 	@Column
 	private String Potencia;
 	
-	@Column
-	private String Revoluciones;
 	
 	@Column
 	private String Peso;
@@ -72,13 +70,6 @@ public class Carta implements Serializable {
 		Potencia = potencia;
 	}
 
-	public String getRevoluciones() {
-		return Revoluciones;
-	}
-
-	public void setRevoluciones(String revoluciones) {
-		Revoluciones = revoluciones;
-	}
 
 	public String getPeso() {
 		return Peso;
@@ -112,7 +103,7 @@ public class Carta implements Serializable {
 	@Override
 	public String toString() {
 		return "Carta [idcarta=" + idcarta + ", Marca=" + Marca + ", Cilindraje=" + Cilindraje + ", Potencia="
-				+ Potencia + ", Revoluciones=" + Revoluciones + ", Peso=" + Peso + ", Codigo=" + Codigo + ", Imagen="
+				+ Potencia + ", Peso=" + Peso + ", Codigo=" + Codigo + ", Imagen="
 				+ Imagen + "]";
 	}
 	
