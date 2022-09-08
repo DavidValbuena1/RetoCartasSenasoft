@@ -57,7 +57,8 @@ public class Cartas_usuariosImp implements Cartas_usuariosService {
 		int cantidadJugadores = u.size();
 		int division = 32 / cantidadJugadores;
 		int numeros[] = new int[rango];
-		int numeros2[]=new int[rango-division+1];
+		int residuo = 32%cantidadJugadores;
+		int numeros2[]=new int[rango-residuo+1];
 		for (i = 0; i < rango; i++) {
 			numeros[i] = ((int) (Math.random() * 32)) + 1;
 			for (int j = 0; j < i; j++) {
