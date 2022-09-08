@@ -93,6 +93,11 @@ public class Cartas_usuariosImp implements Cartas_usuariosService {
 	public List<Cartas_usuarios> actualizarLista(Iterable<Cartas_usuarios> cu) {
 		return repositorio.saveAll(cu);
 	}
+
+	@Override
+	public List<Cartas_usuarios> encontrarPorUsuario(int id) {
+		return repositorio.encontrarPorUsuario(id);
+	}
 	
 
 }

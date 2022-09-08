@@ -59,4 +59,9 @@ public class Cartas_usuariosController {
 	public List<Cartas_usuarios> actualizarLista(@RequestBody List<Cartas_usuarios> cu){
 		return service.actualizarLista(cu);
 	}
+	
+	@GetMapping(path= {"/encontrar/{id}"})
+	public List<Cartas_usuarios> encontrar(@PathVariable("id") int id){
+		return service.encontrarPorUsuario(id);
+	}
 }

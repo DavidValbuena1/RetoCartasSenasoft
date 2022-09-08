@@ -16,4 +16,7 @@ public interface Cartas_usuariosRepository extends Repository<Cartas_usuarios, I
 	public List<Cartas_usuarios> saveAll(Iterable<Cartas_usuarios> cu);
 	
 	public void deleteAll();
+	
+	@Query("SELECT c FROM Cartas_usuarios WHERE c.usuario.idusuario=?1")
+	public List<Cartas_usuarios> encontrarPorUsuario(int id);
 }

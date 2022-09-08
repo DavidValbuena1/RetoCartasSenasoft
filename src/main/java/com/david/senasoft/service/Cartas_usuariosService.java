@@ -19,5 +19,6 @@ public interface Cartas_usuariosService {
 	
 	public List<Cartas_usuarios> repartirCartas(List<Usuario> u);
 	
+	public List<Cartas_usuarios> encontrarPorUsuario(int id);
 
 }
